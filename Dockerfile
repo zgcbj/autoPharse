@@ -12,6 +12,10 @@ RUN \
     echo "===> install Java"  && \
     echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections  && \
     echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections  && \
+    echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/webupd8team-java-$(lsb_release -cs).list && \
+    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
+    apt-get update && \
+    apt-get install -y --allow-unauthenticated oracle-java8-installer && \
     DEBIAN_FRONTEND=noninteractive  apt-get install -y --force-yes oracle-java8-installer oracle-java8-set-default
 
 RUN \
