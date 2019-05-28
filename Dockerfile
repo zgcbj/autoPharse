@@ -1,7 +1,8 @@
 FROM remenberl/autophrase:latest
 MAINTAINER zgc <zhanggc@yeah.net>
 
-RUN apt-get update && apt-get install -y --force-yes make curl perl
+RUN apt-get update 
+RUN apt-get install -y --force-yes make curl perl
 ADD autophrase.tar.gz /
 
 RUN \
