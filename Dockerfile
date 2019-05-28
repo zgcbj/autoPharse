@@ -11,7 +11,8 @@ RUN \
     echo "===> compile" &&\
     cd /autophrase && bash compile.sh 
 
-
+RUN cd /autophrase && wget  http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/english.par.gz && \
+       gunzip english.par.gz && mv english-utf8.par tools/treetagger/lib/english-utf8.par
 ENV COMPILE 0
 
 WORKDIR /autophrase
